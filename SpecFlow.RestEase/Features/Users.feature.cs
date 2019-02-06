@@ -17,17 +17,17 @@ namespace SpecFlow.RestEase.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class GetUsersFeature : Xunit.IClassFixture<GetUsersFeature.FixtureData>, System.IDisposable
+    public partial class UsersFeature : Xunit.IClassFixture<UsersFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "GetUsers.feature"
+#line 1 "Users.feature"
 #line hidden
         
-        public GetUsersFeature(GetUsersFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public UsersFeature(UsersFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -36,7 +36,7 @@ namespace SpecFlow.RestEase.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Get Users,", "  As a Consumer of the Users endpoint,\n  I can retrieve data about Users", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Users", "  As a Consumer of the GitHub Users endpoint,\n  I can retrieve data about Users", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -77,7 +77,7 @@ namespace SpecFlow.RestEase.Features
         }
         
         [Xunit.FactAttribute(DisplayName="Get User - Returns data matching a unique User")]
-        [Xunit.TraitAttribute("FeatureTitle", "Get Users,")]
+        [Xunit.TraitAttribute("FeatureTitle", "Users")]
         [Xunit.TraitAttribute("Description", "Get User - Returns data matching a unique User")]
         public virtual void GetUser_ReturnsDataMatchingAUniqueUser()
         {
@@ -93,6 +93,9 @@ namespace SpecFlow.RestEase.Features
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Attribute",
                         "Value"});
+            table1.AddRow(new string[] {
+                        "Login",
+                        "jukafah"});
             table1.AddRow(new string[] {
                         "ID",
                         "7843737"});
@@ -124,58 +127,58 @@ namespace SpecFlow.RestEase.Features
         }
         
         [Xunit.FactAttribute(DisplayName="Get User - Handles not found")]
-        [Xunit.TraitAttribute("FeatureTitle", "Get Users,")]
+        [Xunit.TraitAttribute("FeatureTitle", "Users")]
         [Xunit.TraitAttribute("Description", "Get User - Handles not found")]
         public virtual void GetUser_HandlesNotFound()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get User - Handles not found", null, ((string[])(null)));
-#line 20
+#line 21
   this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 21
-    testRunner.Given("the github api \"https://api.github.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 22
-    testRunner.When("I get user \"blargblablargbla\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Given("the github api \"https://api.github.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 23
-    testRunner.Then("the service returns not found", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.When("I get user \"blargblablargbla\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 24
+    testRunner.Then("the users endpoint returns not found", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Xunit.FactAttribute(DisplayName="Get Users - Returns data for all Users")]
-        [Xunit.TraitAttribute("FeatureTitle", "Get Users,")]
+        [Xunit.TraitAttribute("FeatureTitle", "Users")]
         [Xunit.TraitAttribute("Description", "Get Users - Returns data for all Users")]
         public virtual void GetUsers_ReturnsDataForAllUsers()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get Users - Returns data for all Users", null, ((string[])(null)));
-#line 25
+#line 26
   this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 26
-    testRunner.Given("the github api \"https://api.github.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 27
-    testRunner.When("I get all users", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Given("the github api \"https://api.github.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 28
+    testRunner.When("I get all users", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 29
     testRunner.Then("a list of users returns", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="Get Users - Returns data for all Users since specific")]
-        [Xunit.TraitAttribute("FeatureTitle", "Get Users,")]
-        [Xunit.TraitAttribute("Description", "Get Users - Returns data for all Users since specific")]
-        public virtual void GetUsers_ReturnsDataForAllUsersSinceSpecific()
+        [Xunit.FactAttribute(DisplayName="Get Users - Returns data for all Users since specific user id")]
+        [Xunit.TraitAttribute("FeatureTitle", "Users")]
+        [Xunit.TraitAttribute("Description", "Get Users - Returns data for all Users since specific user id")]
+        public virtual void GetUsers_ReturnsDataForAllUsersSinceSpecificUserId()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get Users - Returns data for all Users since specific", null, ((string[])(null)));
-#line 30
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get Users - Returns data for all Users since specific user id", null, ((string[])(null)));
+#line 31
   this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 31
-    testRunner.Given("the github api \"https://api.github.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 32
-    testRunner.When("I get all users starting with id \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Given("the github api \"https://api.github.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 33
-    testRunner.Then("a list of users returns starting with id \"6\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.When("I get all users starting with id \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
+    testRunner.Then("a list of users returns starting with id \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -187,12 +190,12 @@ namespace SpecFlow.RestEase.Features
             
             public FixtureData()
             {
-                GetUsersFeature.FeatureSetup();
+                UsersFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                GetUsersFeature.FeatureTearDown();
+                UsersFeature.FeatureTearDown();
             }
         }
     }

@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using FluentAssertions;
 using RestEase;
@@ -17,14 +15,15 @@ namespace SpecFlow.RestEase.StepDefinitions
         private IUsersApi _usersApi;
         private Response<User> _userResponse;
         private Response<List<User>> _usersResponse;
-
         
+        // exposing api in gherkin and using it to instantiate interface in first 'Given' step
         [Given(@"the github api ""(.*)""")]
         public void GivenTheGithubApi(string url)
         {
             _usersApi = RestClient.For<IUsersApi>(url);
         }
         
+        // passing username through gherkin to step
         [When(@"I get user ""(.*)""")]
         public void WhenIGetUser(string username)
         {
@@ -34,6 +33,7 @@ namespace SpecFlow.RestEase.StepDefinitions
         [Then(@"the following data returns")]
         public void ThenTheDataMatches(Table table)
         {
+            // create an instance of a user object from gherkin data table
             var user = table.CreateInstance<User>();
             var actualUser = _userResponse.GetContent();
             user.Should().BeEquivalentTo(actualUser);
@@ -55,13 +55,8 @@ namespace SpecFlow.RestEase.StepDefinitions
         public void ThenAListOfUsersReturns()
         {
             var actualUsers = _usersResponse.GetContent();
-            actualUsers.Should().BeOfType<List<User>>();
-            actualUsers.Should().BeInAscendingOrder(user => user.Id);
-            actualUsers.Should().NotContainNulls(user => user.Url);
-            actualUsers.Should().NotContainNulls(user => user.HtmlUrl);
-            actualUsers.Should().NotContainNulls(user => user.ReposUrl);
-
-            // can also chain
+            
+            // chaining several different assertions
             actualUsers
                 .Should().AllBeOfType<User>()
                 .And.BeInAscendingOrder(user => user.Id)
@@ -70,7 +65,7 @@ namespace SpecFlow.RestEase.StepDefinitions
                 .And.NotContainNulls(user => user.ReposUrl);
         }
         
-        [Then(@"the service returns not found")]
+        [Then(@"the users endpoint returns not found")]
         public void ThenTheServiceReturnsNotFound()
         {
             _userResponse.ResponseMessage.StatusCode.Should().Be(HttpStatusCode.NotFound);
@@ -87,8 +82,9 @@ namespace SpecFlow.RestEase.StepDefinitions
         {
             var actualUsers = _usersResponse.GetContent();
 
+            // more assertion chaining
             actualUsers
-                .Should().HaveElementAt(0, actualUsers.Find(user => user.Id == userId))
+                .Should().Contain(user => user.Id >= userId)
                 .And.AllBeOfType<User>()
                 .And.BeInAscendingOrder(user => user.Id)
                 .And.NotContainNulls(user => user.Url)

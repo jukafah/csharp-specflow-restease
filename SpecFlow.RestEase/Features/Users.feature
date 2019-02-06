@@ -1,5 +1,5 @@
-Feature: Get Users,
-  As a Consumer of the Users endpoint,
+Feature: Users
+  As a Consumer of the GitHub Users endpoint,
   I can retrieve data about Users
   
 
@@ -8,6 +8,7 @@ Feature: Get Users,
     When I get user "jukafah"
     Then the following data returns
         | Attribute | Value                                       |
+        | Login     | jukafah                                     |
         | ID        | 7843737                                     |
         | Repos Url | https://api.github.com/users/jukafah/repos  | 
         | Bio       | I do stuff sometimes.                       |
@@ -20,7 +21,7 @@ Feature: Get Users,
   Scenario: Get User - Handles not found
     Given the github api "https://api.github.com"
     When I get user "blargblablargbla"
-    Then the service returns not found
+    Then the users endpoint returns not found
     
   Scenario: Get Users - Returns data for all Users
     Given the github api "https://api.github.com"
@@ -30,4 +31,4 @@ Feature: Get Users,
   Scenario: Get Users - Returns data for all Users since specific user id
     Given the github api "https://api.github.com"
     When I get all users starting with id "5"
-    Then a list of users returns starting with id "6" 
+    Then a list of users returns starting with id "5" 

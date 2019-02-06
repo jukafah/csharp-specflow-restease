@@ -9,29 +9,30 @@ namespace SpecFlow.RestEase.Support
     public class Hooks
     {
         private readonly IObjectContainer _objectContainer;
-        private string _url = "https://api.github.com";
 
         public Hooks(IObjectContainer objectContainer)
         {
+            // can be used to register objects for use in step constructors
             _objectContainer = objectContainer;
         }
 
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            // doo stuff
+            // do stuff before a test run starts
         }
 
         [BeforeScenario]
         public void BeforeScenario()
         {
-//            _objectContainer.RegisterInstanceAs(_url);
+            // can be useful for preparing test data classes to pass around step definitions
+            // _objectContainer.RegisterInstanceAs(yourObjectHere);
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            // doo even more stuff
+            // do stuff after a scenario has finished
         }
     }
 }

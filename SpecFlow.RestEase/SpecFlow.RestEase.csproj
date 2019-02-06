@@ -76,15 +76,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utility" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\GetRepos.feature.cs" />
-    <Compile Include="Features\GetUsers.feature.cs" />
+    <Compile Include="Features\Repos.feature.cs" />
+    <Compile Include="Features\Users.feature.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Services\IReposApi.cs" />
@@ -94,8 +91,8 @@
     <Compile Include="Support\Hooks.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Features\GetRepos.feature" />
-    <Content Include="Features\GetUsers.feature" />
+    <Content Include="Features\Repos.feature" />
+    <Content Include="Features\Users.feature" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
